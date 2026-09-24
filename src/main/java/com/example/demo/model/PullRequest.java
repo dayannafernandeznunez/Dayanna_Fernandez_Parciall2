@@ -30,17 +30,16 @@ public class PullRequest {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-
-    @JsonIgnore
+     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "repository_id", nullable = false)
     private Repository repository;
 
-    @ManyToOne
+     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
-    @ManyToOne
+     @ManyToOne
     @JoinColumn(name = "reviewer_id")
     private User reviewer;
 }

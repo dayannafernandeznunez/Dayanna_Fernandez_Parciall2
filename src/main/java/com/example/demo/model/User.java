@@ -3,7 +3,6 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-
 public class User {
 
-
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -34,12 +31,11 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-
-
-    @JsonIgnore
+     @JsonIgnore
     @OneToMany(mappedBy = "teacher")
     private List<Classroom> taughtClassrooms = new ArrayList<>();
 
+     @JsonIgnore
     @OneToMany(mappedBy = "owner")
     private List<Repository> ownedRepositories = new ArrayList<>();
 

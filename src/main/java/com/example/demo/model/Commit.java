@@ -16,7 +16,7 @@ public class Commit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "commit_hash", nullable = false, unique = true)
     private String commitHash;
@@ -24,7 +24,7 @@ public class Commit {
     @Column(nullable = false)
     private String message;
 
-    @Column(name = "lines_added", nullable = false)
+     @Column(name = "lines_added", nullable = false)
     private Integer linesAdded;
 
     @Column(name = "lines_deleted", nullable = false)
@@ -38,7 +38,7 @@ public class Commit {
     @JoinColumn(name = "repository_id", nullable = false)
     private Repository repository;
 
-    @ManyToOne
+     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
 }

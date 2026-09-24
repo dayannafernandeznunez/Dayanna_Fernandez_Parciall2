@@ -20,7 +20,4 @@ public class UserController {
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
-
-
-    @RestController
 }

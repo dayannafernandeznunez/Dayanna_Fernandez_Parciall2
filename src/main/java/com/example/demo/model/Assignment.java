@@ -16,22 +16,27 @@ import java.util.List;
 @Table(name = "assignments")
 public class Assignment {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String title;
 
-
-    @Column(columnDefinition = "TEXT")
+     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false)
+     @Column(nullable = false)
     private LocalDateTime deadline;
 
     @Column(name = "max_score", nullable = false)
     private Integer maxScore;
 
+     @ManyToOne
+    @JoinColumn(name = "classroom_id", nullable = false)
+    private Classroom classroom;
 
+     @JsonIgnore
+    @OneToMany(mappedBy = "assignment")
+    private List<Repository> repositories = new ArrayList<>();
 }

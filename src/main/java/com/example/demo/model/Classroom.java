@@ -7,6 +7,7 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// FIX: the class was empty (no @Id, no attributes) and had no @Getter
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,6 +29,11 @@ public class Classroom {
     @Column(nullable = false)
     private String semester;
 
+     @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private User teacher;
 
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "classroom")
+    private List<Assignment> assignments = new ArrayList<>();
 }
